@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile temp.c
+        run: gcc -o temp temp.c
+
+      - name: Run and check return code
+        run: |
+          ./temp
+          if [ $? -ne 0 ]; then
+            echo "Program exited with non-zero return code"
+            exit 1
+          fi
