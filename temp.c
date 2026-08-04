@@ -12,5 +12,5 @@ int main()
   printf("The simplest solution —\n");
   printf("The best one I've seen.\n");
 
-  return 1;
+  return 1
 }
